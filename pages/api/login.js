@@ -23,7 +23,10 @@ const handler = async (req, res) => {
 
 				if (user.length > 0)
 					return res
-						.setHeader('Set-Cookie', `token=${encodeJwt(users[0].Id)}; path=/`)
+						.setHeader(
+							'Set-Cookie',
+							`token=${encodeJwt(users[0].Id)}; path=/; samesite=lax; httponly;`
+						)
 						.status(200)
 						.json({
 							status: 'success',
